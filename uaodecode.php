@@ -2,7 +2,7 @@
 /**
  * Decode Unicode-At-On Big5 to Unicode.
  *
- * This script is ported from {@link http://svn.openfoundry.org/pcman/trunk/UAOTabGen/ PCMan::UAOTabGen}.
+ * This script is ported from {@link http://svn.openfoundry.org/pcman/trunk/UAOTabGen/ PCMan::CUcs2Conv}.
  * Licensed under {@link http://zh.wikipedia.org/wiki/GPL GNU GPL}.
  * @author Joel Lee <elohim@gmail.com>
  * @version 1.0
