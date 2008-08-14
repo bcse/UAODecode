@@ -2,16 +2,37 @@
 /**
  * Decode Unicode-At-On Big5 to Unicode.
  *
- * Algorithm is ported from PCMan::UAOTabGen: http://svn.openfoundry.org/pcman/trunk/UAOTabGen/
+ * This script is ported from {@link http://svn.openfoundry.org/pcman/trunk/UAOTabGen/ PCMan::UAOTabGen}.
+ * Licensed under {@link http://zh.wikipedia.org/wiki/GPL GNU GPL}.
+ * @author Joel Lee <elohim@gmail.com>
+ * @version 1.0
+ * @package UAO
  */
 class UAODecode
 {
+	/**
+	 * B2U table
+	 *
+	 * @access private
+	 * @staticvar string
+	 */
 	private static $B2U;
 
+	/**
+	 * Load B2U table
+	 *
+	 * @return void
+	 */
 	public static function init() {
 		self::$B2U = file_get_contents('B2U');
 	}
 
+	/**
+	 * Decode UAO-Big5 characters to numeric character reference
+	 *
+	 * @param string $text Big5 chracters
+	 * @return string
+	 */
 	public static function big5_to_ncr($text) {
 		if ( empty(self::$B2U) ) {
 			self::init();
@@ -37,6 +58,12 @@ class UAODecode
 		return $ret;
 	}
 
+	/**
+	 * Decode UAO-Big5 characters to UTF-8 characters
+	 *
+	 * @param string $text Big5 chracters
+	 * @return string
+	 */
 	public static function big5_to_utf8($text) {
 		return html_entity_decode(self::big5_to_ncr($text), ENT_NOQUOTES, 'UTF-8');
 	}
